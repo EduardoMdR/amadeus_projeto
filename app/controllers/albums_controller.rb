@@ -10,7 +10,7 @@ class AlbumsController < ApplicationController
         @listener = @current_user.listener
         @albums = Album.where(artist_id: @artist)
         @favorites = FavoriteSong.where(listener_id: @listener)
-        @meudeus = Album.search(params[:search])
+        @pagy, @meudeus = pagy(Album.search(params[:search]), items: 18)
     end
 
     def show

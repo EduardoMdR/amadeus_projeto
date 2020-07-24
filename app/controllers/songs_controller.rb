@@ -5,10 +5,10 @@ class SongsController < ApplicationController
 
     ##### SHOW #####
     def index
-        @songs = Song.search(params[:search])
         @current_user = User.find(session["user_id"])
         @listener = @current_user.listener
         @favorites = FavoriteSong.where(listener_id: @listener)
+        @pagy, @songs = pagy(Song.search(params[:search]), items:25)
     end
 
     def show
