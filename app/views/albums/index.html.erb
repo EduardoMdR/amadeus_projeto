@@ -38,7 +38,7 @@
     <!-- Pesquisar por Artista -->
     <div class="text-light pt-5 text-center">
       <%= form_tag(albums_path, method: :get) do %>
-        <h2>Procurar por artista : <%= text_field_tag(:search, params[:search], {class: "textoboxe"}) %><h2>
+        <h2>Procurar álbum : <%= text_field_tag(:search, params[:search], {class: "textoboxe"}) %><h2>
         <h2><%= submit_tag ("Procurar"), :class => 'botao' %></h2>
       <% end %>
     </div>
