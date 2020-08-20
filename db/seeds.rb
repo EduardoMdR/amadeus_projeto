@@ -6,11 +6,32 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-artista = Role.create(name: "artista")
-usuario = Role.create(name: "usuario")
+already_seeded = Role.count.positive?
 
-Genre.create({name: "Rock 'n Roll"})
-Genre.create({name: 'Samba/Pagode'})
-Genre.create({name: 'Hip-Hop/Rap'})
-Genre.create({name: 'Clássica'})
-Genre.create({name: 'Pop'})
+unless already_seeded
+  # Criação das roles
+  artista = Role.create(name: "artista")
+  usuario = Role.create(name: "usuario")
+
+  # Criação de usuários
+  User.create(
+    name: 'artista',
+    email: 'artista@artista.com',
+    password: '123456',
+    role: artista
+  )
+
+  User.create(
+    name: 'usuario',
+    email: 'usuario@usuario.com',
+    password: '123456',
+    role: usuario
+  )
+
+  # Criação gêneros
+  Genre.create({name: "Rock 'n Roll"})
+  Genre.create({name: 'Samba/Pagode'})
+  Genre.create({name: 'Hip-Hop/Rap'})
+  Genre.create({name: 'Clássica'})
+  Genre.create({name: 'Pop'})
+end

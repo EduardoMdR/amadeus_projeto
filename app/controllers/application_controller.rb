@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  include Pagy::Backend
     def require_login
         unless logged_in?
             flash[:error] = "Você precisa estar logado"
